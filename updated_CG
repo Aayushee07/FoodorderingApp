@@ -2,7 +2,15 @@
 #include <conio.h>
 #include <graphics.h>
 #include <dos.h>
-
+void engine()
+{
+int p;
+for(p=1;p<50;p++){
+              sound(p);
+              delay(50);
+}
+nosound();
+}
   int main() {
 	/* request auto detection */
 	int gdriver = DETECT, gmode;
@@ -10,7 +18,7 @@
 
 	/* initialize graphic mode */
 	initgraph(&gdriver, &gmode, "C:/TURBOC3/BGI");
-	printf("Pick Traffic Signal Color  1.Red 2.Green :");
+	printf("Pick Traffic Signal Color  1.Red 2.Green 3.Yellow :");
 	scanf("%d",&a);
         switch(a)
         {
@@ -42,13 +50,38 @@
         cleardevice();
         break;
         }
-       default:
+       
+       case 3:{
+       i=0;
+        s=-1;
+        
+        midy = getmaxy() / 2;
+        cleardevice();
+              
+               line(600,midy + 35,600,midy - 30);
+               line(615,midy + 35,615,midy - 30);
+               line(595,midy -30,621,midy - 30);
+               line(595,midy - 110,621,midy - 110);
+               line(595,midy - 30,595,midy - 110);
+               line(622,midy - 30,622,midy - 110);
+               circle(608,midy-96,12);
+               setcolor(WHITE);
+               circle(608,midy-70,12);
+               setfillstyle(SOLID_FILL,YELLOW);
+               floodfill(608,midy-70,WHITE);
+               circle(608,midy-44,12);
+               goto A;
+               C:
+               engine();
+               goto B;                    
+}
+default:
        {
        printf("Invalid Option");
        goto B;
+}
+}
        
-       }
-       }
        
 	// max position in x-axis 
 	maxx = getmaxx();
@@ -74,7 +107,8 @@
                setfillstyle(SOLID_FILL,GREEN);
                floodfill(608,midy-44,WHITE);
 		
-  A:
+       A:
+                
 		// mountains 
 		setcolor(BROWN);
 		line(0,100,maxx,100);
@@ -132,7 +166,7 @@
 		floodfill(580,20,WHITE);
 		floodfill(630,70,WHITE);
 
-     // road
+                // road
 		setcolor(WHITE);
 		line(0, midy + 35, maxx, midy + 35);
 
@@ -164,19 +198,24 @@
 		line(62 + i, midy, 62 + i, midy - 15);
 		floodfill(5 + i, midy + 22, RED);
 		setcolor(DARKGRAY);
-	  setfillstyle(SLASH_FILL, DARKGRAY);
+	        setfillstyle(SLASH_FILL, DARKGRAY);
 		circle(30 + i, midy + 25, 9);
 		circle(90 + i, midy + 25, 9);
 		floodfill(30 + i, midy + 25, DARKGRAY);
 		floodfill(90 + i, midy + 25, DARKGRAY);
-		     if(s==0)
+		    if(s==0)
                        {
                        goto B;
                         }
-                     else
+                     else if(s==-1){
+                         
+                        goto C;
+                         }
+                     else  
                        {
 	               delay(d);
                        }
+                     
 	          }
 
       B:
