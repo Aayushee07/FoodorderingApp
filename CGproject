@@ -14,7 +14,18 @@
         /* Speed of the car */
 	printf("What Speed do you want for the car (1 to 100):");
 	scanf("%d",&s);
-    d=100-s;
+    if(s==0)
+{
+i=g;
+maxx = getmaxx();
+midy = getmaxy() / 2;
+cleardevice();
+goto A;
+}
+else
+{
+	 d=100-s;
+}
 
 	/* max position in x-axis */
 	maxx = getmaxx();
@@ -29,7 +40,7 @@
 		/* clears the graphic screen */
 		cleardevice();
 
-
+A:
 		/* mountains */
 		setcolor(BROWN);
 		line(0,100,maxx,100);
@@ -128,10 +139,17 @@
 		circle(90 + i, midy + 25, 9);
 		floodfill(30 + i, midy + 25, DARKGRAY);
 		floodfill(90 + i, midy + 25, DARKGRAY);
-		delay(d);
+		     if(s==0)
+{
+goto B;
+}
+else
+{
+	  delay(d);
+}
 	}
 
-
+B:
 	getch();
 
 	/* deallocate memory allocated for graphic screen */
