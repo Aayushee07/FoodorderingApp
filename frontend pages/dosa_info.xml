@@ -27,7 +27,7 @@
                 android:background="#DB5C00"
                 android:fontFamily="@font/archivo_black"
                 android:gravity="center"
-                android:text="VEGETABLE POHA"
+                android:text="VEGETABLE DOSA"
                 android:textColor="#FAF7F7"
                 android:textSize="30sp" />
 
