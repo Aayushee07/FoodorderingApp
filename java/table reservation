@@ -1,0 +1,89 @@
+package com.example.restaurantapp;
+
+import static android.content.ContentValues.TAG;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class TableReservation extends AppCompatActivity {
+
+    EditText mGuest,mDate,mTime;
+    Button mGo;
+    FirebaseFirestore fStore;
+    FirebaseAuth fAuth;
+    String userID;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_table_reservation);
+
+        mGuest = findViewById(R.id.editTextNumber);
+        mDate = findViewById(R.id.editTextDate);
+        mTime = findViewById(R.id.editTextTime);
+        mGo = findViewById(R.id.button2);
+        fStore=FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+
+        mGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String guest = mGuest.getText().toString();
+                String date = mDate.getText().toString();
+                String time = mTime.getText().toString();
+                if (TextUtils.isEmpty(guest))
+                {
+                    mGuest.setError("Please Enter");
+                    return;
+                }
+                if (TextUtils.isEmpty(date))
+                {
+                    mDate.setError("Please Enter");
+                    return;
+                }
+                if (TextUtils.isEmpty(time))
+                {
+                    mTime.setError("Please Enter");
+                    return;
+                }
+
+                userID = fAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = fStore.collection("Table Reservation").document(userID);
+                Map<String,Object> user = new HashMap<>();
+                user.put("No. of Guests",guest);
+                user.put("Date",date);
+                user.put("Time",time);
+                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG,"On success:Table is reserved for"+userID);
+                    }
+                });
+
+
+            }
+        });
+        mGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MenuCard.class));
+            }
+        });
+
+    }
+}
