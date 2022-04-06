@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFE5BF"
+    tools:context=".MainActivity"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#DB5C00"
+                android:fontFamily="@font/archivo_black"
+                android:gravity="center"
+                android:text="Menu"
+                android:textColor="#FAF7F7"
+                android:textSize="30sp" />
+
+
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/archivo_black"
+                android:shadowColor="#D1A76A"
+                android:text="Breakfast"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:backgroundTint="#DD9326" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/archivo_black"
+                android:text="Juices"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:backgroundTint="#DD9326" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical"
+                android:backgroundTint="#DD9326"
+                android:fontFamily="@font/archivo_black"
+                android:text="Salads"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#DD9326"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/archivo_black"
+                android:text="Meal Bowls"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
